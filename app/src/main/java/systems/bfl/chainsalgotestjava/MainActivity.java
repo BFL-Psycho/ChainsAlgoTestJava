@@ -138,12 +138,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void generateGraph(int graphLength) {
+        if (dictionarySet==null) {consoleOutput.setText("Load dictionary first!"); return;}
+        try {
+            currentGraph = new SimpleGraph<>(DefaultEdge.class);
+
         if (graphLength==0) {
             consoleOutput.setText("Set word length for a graph!");
+            return;
         }
 
         Set<String> shortDictionary = new HashSet<>();
         consoleOutput.setText("Loading words with length: "+graphLength);
+
         for (String word : dictionarySet) {
             if (word.length()==graphLength) {
                 shortDictionary.add(word);
@@ -166,8 +172,11 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         long endTime = System.currentTimeMillis();
-        consoleOutput.setText("Graph generated within: "+(endTime-startTime)+" ms.");
+        consoleOutput.setText("Graph generated within: "+(endTime-startTime)+" ms. Contains vertices: "+currentGraph.vertexSet().size());
 
+        } catch (Exception e) {
+            consoleOutput.setText(e.getMessage());
+        }
     }
 
     private boolean isOneCharOff(String str1, String str2) {

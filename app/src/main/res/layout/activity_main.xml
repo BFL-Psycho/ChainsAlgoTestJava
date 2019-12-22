@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/content"
+        android:layout_marginTop="30dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_loadDictionary"
+            android:text="Load Dictionary"
+            android:textSize="18sp"
+            android:layout_margin="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_generateGraph"
+            android:layout_below="@id/btn_loadDictionary"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edittxt_Letters"
+                android:layout_weight="30"/>
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_generateGraph"
+                android:text="Generate Graph"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                android:layout_weight="70"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_testWordContains"
+            android:layout_below="@id/layout_generateGraph"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            >
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edittxt_Word"
+                android:layout_weight="50"
+                />
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_testWordContains"
+                android:text="Find Word"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                android:layout_weight="50"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_testWordContainsLabels"
+            android:layout_below="@id/layout_startWordEndWord"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_startWord"
+                android:layout_weight="50"
+                android:text="Start Word"/>
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/label_endWord"
+                android:text="End Word"
+                android:textSize="18sp"
+                android:layout_weight="50"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_startWordEndWord"
+            android:layout_below="@id/layout_testWordContains"
+            android:orientation="horizontal"
+            android:weightSum="100"
+            >
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edittxt_startWord"
+                android:layout_weight="50"
+                />
+
+            <EditText
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/edittxt_endWord"
+                android:layout_weight="50"/>
+
+
+
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_testDijkstra"
+            android:text="Run Dijkstra's"
+            android:textSize="18sp"
+            android:layout_margin="30dp"
+            android:layout_below="@id/layout_startWordEndWord"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_testBFS"
+            android:text="Run BFS"
+            android:textSize="18sp"
+            android:layout_margin="10dp"
+            android:layout_below="@id/btn_testDijkstra"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_testPermutation"
+            android:text="Run Permutation"
+            android:textSize="18sp"
+            android:layout_margin="10dp"
+            android:layout_below="@id/btn_testBFS"/>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/consoleOutputLabel"
+        android:text="Console Output:"
+        android:layout_above="@id/consoleOutput"
+        android:textSize="18sp">
+
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/consoleOutput"
+        android:layout_alignParentBottom="true"
+        android:textSize="16sp">
+
+    </TextView>
+
+
+</RelativeLayout>

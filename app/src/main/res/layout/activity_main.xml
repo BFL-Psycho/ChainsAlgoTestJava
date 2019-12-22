@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/content"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="5dp">
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/btn_loadDictionary"
             android:text="Load Dictionary"
             android:textSize="18sp"
@@ -43,7 +43,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:id="@+id/btn_generateGraph"
                 android:text="Generate Graph"
                 android:textSize="18sp"
@@ -73,7 +73,7 @@
 
             <Button
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:id="@+id/btn_testWordContains"
                 android:text="Find Word"
                 android:textSize="18sp"
@@ -143,18 +143,18 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/btn_testDijkstra"
             android:text="Run Dijkstra's"
             android:textSize="18sp"
-            android:layout_margin="30dp"
+            android:layout_marginTop="25dp"
             android:layout_below="@id/layout_startWordEndWord"
             android:textColor="@color/yellow"
             android:background="@color/purple"/>
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/btn_testBFS"
             android:text="Run BFS"
             android:textSize="18sp"
@@ -165,11 +165,10 @@
 
         <Button
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:id="@+id/btn_testPermutation"
             android:text="Run Permutation"
             android:textSize="18sp"
-            android:layout_margin="10dp"
             android:layout_below="@id/btn_testBFS"
             android:textColor="@color/yellow"
             android:background="@color/purple"/>

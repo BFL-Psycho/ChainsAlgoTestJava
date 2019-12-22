@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/black">
 
 
     <RelativeLayout
@@ -19,7 +20,9 @@
             android:id="@+id/btn_loadDictionary"
             android:text="Load Dictionary"
             android:textSize="18sp"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:textColor="@color/yellow"
+            android:background="@color/purple"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,7 +36,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/edittxt_Letters"
-                android:layout_weight="30"/>
+                android:layout_weight="30"
+                android:textColor="@color/blue"
+                android:background="@color/yellow"/>
 
 
             <Button
@@ -43,7 +48,9 @@
                 android:text="Generate Graph"
                 android:textSize="18sp"
                 android:layout_margin="10dp"
-                android:layout_weight="70"/>
+                android:layout_weight="70"
+                android:textColor="@color/yellow"
+                android:background="@color/purple"/>
 
         </LinearLayout>
 
@@ -61,7 +68,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/edittxt_Word"
                 android:layout_weight="50"
-                />
+                android:background="@color/yellow"/>
 
 
             <Button
@@ -71,7 +78,9 @@
                 android:text="Find Word"
                 android:textSize="18sp"
                 android:layout_margin="10dp"
-                android:layout_weight="50"/>
+                android:layout_weight="50"
+                android:textColor="@color/yellow"
+                android:background="@color/purple"/>
 
         </LinearLayout>
 
@@ -89,7 +98,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/label_startWord"
                 android:layout_weight="50"
-                android:text="Start Word"/>
+                android:text="Start Word"
+                android:textColor="@color/blue"/>
 
 
             <TextView
@@ -98,7 +108,8 @@
                 android:id="@+id/label_endWord"
                 android:text="End Word"
                 android:textSize="18sp"
-                android:layout_weight="50"/>
+                android:layout_weight="50"
+                android:textColor="@color/blue"/>
 
         </LinearLayout>
 
@@ -116,13 +127,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/edittxt_startWord"
                 android:layout_weight="50"
-                />
+                android:background="@color/yellow"/>
 
             <EditText
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:id="@+id/edittxt_endWord"
-                android:layout_weight="50"/>
+                android:layout_weight="50"
+                android:background="@color/yellow"/>
 
 
 
@@ -136,7 +148,9 @@
             android:text="Run Dijkstra's"
             android:textSize="18sp"
             android:layout_margin="30dp"
-            android:layout_below="@id/layout_startWordEndWord"/>
+            android:layout_below="@id/layout_startWordEndWord"
+            android:textColor="@color/yellow"
+            android:background="@color/purple"/>
 
         <Button
             android:layout_width="match_parent"
@@ -145,7 +159,9 @@
             android:text="Run BFS"
             android:textSize="18sp"
             android:layout_margin="10dp"
-            android:layout_below="@id/btn_testDijkstra"/>
+            android:layout_below="@id/btn_testDijkstra"
+            android:textColor="@color/yellow"
+            android:background="@color/purple"/>
 
         <Button
             android:layout_width="match_parent"
@@ -154,7 +170,9 @@
             android:text="Run Permutation"
             android:textSize="18sp"
             android:layout_margin="10dp"
-            android:layout_below="@id/btn_testBFS"/>
+            android:layout_below="@id/btn_testBFS"
+            android:textColor="@color/yellow"
+            android:background="@color/purple"/>
 
 
 
@@ -176,7 +194,8 @@
         android:id="@+id/consoleOutputLabel"
         android:text="Console Output:"
         android:layout_above="@id/consoleOutput"
-        android:textSize="18sp">
+        android:textSize="18sp"
+        android:textColor="@color/blue">
 
     </TextView>
 
@@ -185,7 +204,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/consoleOutput"
         android:layout_alignParentBottom="true"
-        android:textSize="16sp">
+        android:textSize="16sp"
+        android:textColor="@color/yellow">
 
     </TextView>
 

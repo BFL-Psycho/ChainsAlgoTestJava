@@ -3,6 +3,7 @@ package systems.bfl.chainsalgotestjava;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +16,6 @@ import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.SimpleGraph;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,6 +24,8 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView consoleOutput;
 
     // Dictionary
-    private File dictionaryFile;
     private BufferedReader bufferedReader = null;
     private Set<String> dictionarySet;
 
@@ -83,7 +83,13 @@ public class MainActivity extends AppCompatActivity {
         generateGraph.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                generateGraph(Integer.valueOf(graphWordLength.getText().toString()));
+                consoleOutput.setText("Wait...");
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        generateGraph(Integer.valueOf(graphWordLength.getText().toString()));
+                    }
+                }, 500);
             }
         });
 
@@ -97,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         runDijkstras.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                consoleOutput.setText("Wait...");
                 runDijkstras(startWord.getText().toString(), endWord.getText().toString());
             }
         });
@@ -104,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
         runBFS.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                consoleOutput.setText("Wait...");
                 runBFS(startWord.getText().toString(), endWord.getText().toString());
             }
         });
@@ -117,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadDictionary() {
-        dictionaryFile = new File("");
         try {
             bufferedReader = new BufferedReader(new InputStreamReader(getAssets().open("words_dirty.txt")));
             dictionarySet = new HashSet<>();
@@ -332,3 +339,4 @@ class Node{
         this.prev=prev;
     }
 }
+

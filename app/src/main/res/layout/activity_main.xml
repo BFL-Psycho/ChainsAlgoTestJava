@@ -176,6 +176,81 @@
 
 
 
+            <EditText
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginLeft="15dp"
+                android:id="@+id/editChainLength"
+                android:layout_below="@+id/btn_testPermutation"
+                android:layout_weight="50"
+                android:background="@color/yellow"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/btn_testPermutation"
+            android:text="Assign chain length"
+            android:textColor="@color/blue"
+            />
+
+
+            <Button
+                android:layout_width="250dp"
+                android:layout_height="30dp"
+                android:id="@+id/btn_runBackLevenstein"
+                android:layout_marginTop="60dp"
+                android:layout_below="@+id/editChainLength"
+                android:text="Run back Levenstein"
+                android:textSize="18sp"
+                android:layout_margin="10dp"
+                android:layout_weight="50"
+                android:textColor="@color/yellow"
+                android:background="@color/purple"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_runBackLevenstein"
+            android:text="Start word is: "
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_newStartWord"
+            android:layout_below="@+id/btn_runBackLevenstein"
+            android:layout_marginLeft="120sp"
+            android:text="word "
+            android:textColor="@color/blue"
+            android:textSize="18sp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text_newStartWord"
+            android:id="@+id/btn_runCompulsion"
+            android:text="Run compulsion finding ladders"
+            android:textSize="18sp"
+            android:layout_margin="10dp"
+            android:layout_weight="50"
+            android:textColor="@color/yellow"
+            android:background="@color/purple"
+            />
+
+
+
+
+
+
+
+
+
     </RelativeLayout>
 
 
@@ -207,6 +282,8 @@
         android:textColor="@color/yellow">
 
     </TextView>
+
+
 
 
 </RelativeLayout>

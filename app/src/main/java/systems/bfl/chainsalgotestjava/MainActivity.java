@@ -23,22 +23,25 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class MainActivity extends AppCompatActivity {
 
     //UI Elements
-    private Button loadDictionary, generateGraph, findWordContains, runDijkstras, runBFS, runPermutation;
-    private EditText graphWordLength, wordFindWord, startWord, endWord;
+    private Button loadDictionary, generateGraph, findWordContains, runDijkstras, runBFS, runPermutation, runBackLevenstein, runCompulsionFinding;
+    private EditText graphWordLength, wordFindWord, startWord, endWord, chainLength;
 
     // Console
-    private TextView consoleOutput;
+    private TextView consoleOutput, newStartWordOutput;
 
     // Dictionary
     private BufferedReader bufferedReader = null;
     private Set<String> dictionarySet;
+    private ArrayList<String> dictionaryArray;
 
     // Graph
     private Graph<String, DefaultEdge> currentGraph;
@@ -63,13 +66,18 @@ public class MainActivity extends AppCompatActivity {
         runDijkstras = (Button) findViewById(R.id.btn_testDijkstra);
         runBFS = (Button) findViewById(R.id.btn_testBFS);
         runPermutation = (Button) findViewById(R.id.btn_testPermutation);
+        runBackLevenstein = (Button) findViewById(R.id.btn_runBackLevenstein);
+        runCompulsionFinding = (Button) findViewById(R.id.btn_runCompulsion);
+
 
         graphWordLength = (EditText) findViewById(R.id.edittxt_Letters);
         wordFindWord = (EditText) findViewById(R.id.edittxt_Word);
         startWord = (EditText) findViewById(R.id.edittxt_startWord);
         endWord = (EditText) findViewById(R.id.edittxt_endWord);
+        chainLength = (EditText) findViewById(R.id.editChainLength);
 
         consoleOutput = (TextView) findViewById(R.id.consoleOutput);
+        newStartWordOutput = (TextView) findViewById(R.id.text_newStartWord);
     }
 
     private void setButtonActions() {
@@ -122,6 +130,23 @@ public class MainActivity extends AppCompatActivity {
                 runPermutation(startWord.getText().toString(), endWord.getText().toString());
             }
         });
+
+        runBackLevenstein.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+               String newWord = backLevenstein(endWord.getText().toString(), Integer.valueOf(chainLength.getText().toString()));
+               newStartWordOutput.setText(newWord);
+            }
+        });
+
+        runCompulsionFinding.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ArrayList<String> result = randomLadders(endWord.getText().toString(), Integer.valueOf(chainLength.getText().toString()));
+            }
+        });
+
     }
 
     private void loadDictionary() {
@@ -142,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             consoleOutput.setText(e.getMessage());
         }
+
+        dictionaryArray = new ArrayList<>(dictionarySet);
     }
 
     private void generateGraph(int graphLength) {
@@ -324,6 +351,117 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return result;
+    }
+
+   /* private ArrayList<String> compulsionFindLadders(String beginWord, String endWord, int chainLength) {
+
+        long startTime = System.currentTimeMillis();
+        ArrayList<String> result = new ArrayList<>();
+        boolean isFounded = false;
+
+        while (!isFounded) {
+            List<List<String>> ladders = findLadders(beginWord, endWord);
+
+            for (int i = 0; i < ladders.size(); i++) {
+                if (ladders.get(i).size() == chainLength) {
+                    result = new ArrayList<>(ladders.get(i));
+                    isFounded = true;
+                    break;
+
+                }
+            }
+
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        consoleOutput.setText("Compulsion finding took: " + (endTime - startTime) + " ms");
+
+        return result;
+    }*/
+
+   private ArrayList<String> randomLadders(String endWord, int chainLength) {
+
+       long startTime = System.currentTimeMillis();
+
+        ArrayList<String> result = new ArrayList<>();
+        boolean isFound = false;
+
+        while (!isFound) {
+
+            //Random rn = new Random(); rn.nextInt();
+            int index = (int)(Math.random() * (dictionarySet.size() + 1));
+            System.out.println("Index is " + index);
+            String randomWord = dictionaryArray.get(index);
+            System.out.println("Word is " + randomWord);
+
+            if (randomWord.length() == endWord.length()) {
+
+                List<List<String>> ladder = findLadders(randomWord, endWord);
+
+                //Looping makes 0 sense
+                for (int i = 0; i < ladder.size(); i++) {
+                    if (ladder.get(i).size() == chainLength) {
+                        result = new ArrayList<>(ladder.get(i));
+                        isFound = true;
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        consoleOutput.setText("Random ladder finding took: " + (endTime - startTime) + " ms");
+
+        return result;
+
+   }
+
+    //return whole path
+    public String backLevenstein(String endWord, int chainLenght) {
+
+        long startTime = System.currentTimeMillis();
+
+        String startWord = "";
+
+        HashSet<String> unvisited = new HashSet<>();
+        unvisited.addAll(dictionarySet);
+
+        int counter = 0;
+
+        String currentWord = endWord;
+
+        while (counter <= chainLenght) {
+
+            int index = ThreadLocalRandom.current().nextInt(0, endWord.length());
+
+            char c = currentWord.charAt(index);
+            char[] array = currentWord.toCharArray();
+
+            for (char j ='z'; j >= 'a'; j--) {
+                if (j==c) {
+                    continue;
+                }
+
+                array[index] = j;
+                String newWord = new String(array);
+
+                if (unvisited.contains(newWord)) {
+                    counter ++;
+                    unvisited.remove(newWord);
+                    currentWord = newWord;
+                    break;
+                }
+            }
+        }
+
+        startWord = currentWord;
+        long endTime = System.currentTimeMillis();
+        consoleOutput.setText("Finding start word lasted " + (endTime-startTime) +"ms");
+
+        return startWord;
     }
 
 }

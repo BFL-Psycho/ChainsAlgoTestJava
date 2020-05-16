@@ -1,0 +1,48 @@
+[
+  {
+    "locationName": "Light Woods",
+    "levels":
+    [
+      {
+        "levelNumber": 3,
+        "goalWord": "test",
+        "pathLength": 5,
+        "startWords": ["test", "test", "test"],
+        "magicQuote": "Your quote.."
+
+      },
+      {
+        "levelNumber": 4,
+        "goalWord": "test",
+        "pathLength": 5,
+        "startWords": ["test", "test", "test"],
+        "magicQuote": "Your quote.."
+
+      }
+    ]
+  },
+  {
+    "locationName": "Dark Woods",
+    "levels":
+    [
+      {
+        "levelNumber": 5,
+        "goalWord": "test",
+        "pathLength": 5,
+        "startWords": ["test", "test", "test"],
+        "magicQuote": "Your quote.."
+
+      },
+      {
+        "levelNumber": 6,
+        "goalWord": "test",
+        "pathLength": 5,
+        "startWords": ["test", "test", "test"],
+        "magicQuote": "Your quote.."
+
+      }
+    ]
+  }
+
+]
+

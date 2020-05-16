@@ -389,8 +389,11 @@ public class MainActivity extends AppCompatActivity {
 
         while (!isFound) {
 
+            Random random = new Random();
             //Random rn = new Random(); rn.nextInt();
-            int index = (int)(Math.random() * (dictionarySet.size() + 1));
+            int index = random.nextInt(dictionarySet.size()-1);
+
+
             System.out.println("Index is " + index);
             String randomWord = dictionaryArray.get(index);
             System.out.println("Word is " + randomWord);
@@ -398,20 +401,22 @@ public class MainActivity extends AppCompatActivity {
             if (randomWord.length() == endWord.length()) {
 
                 List<List<String>> ladder = findLadders(randomWord, endWord);
+                if (ladder == null || ladder.size() < 1) continue;
 
-                //Looping makes 0 sense
-                for (int i = 0; i < ladder.size(); i++) {
-                    if (ladder.get(i).size() == chainLength) {
-                        result = new ArrayList<>(ladder.get(i));
-                        isFound = true;
-                        break;
-                    }
+                if(ladder.get(0).size() == chainLength) {
+                    result = new ArrayList<>(ladder.get(0));
+                    isFound = true;
+
                 }
             }
 
         }
 
         long endTime = System.currentTimeMillis();
+
+        for(String res : result) {
+            System.out.println(res);
+        }
 
         consoleOutput.setText("Random ladder finding took: " + (endTime - startTime) + " ms");
 
